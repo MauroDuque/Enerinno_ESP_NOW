@@ -1,5 +1,5 @@
-#ifndef ENERINNO_ESP_NOW_SENDER_H
-#define ENERINNO_ESP_NOW_SENDER_H
+#ifndef ESP_NOW_SENDER_H
+#define ESP_NOW_SENDER_H
 
 #include "struct_message.h"
 
