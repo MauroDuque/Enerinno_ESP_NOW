@@ -1,0 +1,21 @@
+{
+  "name": "Enerinno_ESP_NOW",
+  "keywords": "ESP32, ESP_NOW",
+  "description": "Esentials for ESP_NOW",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/MauroDuque/Enerinno_ESP_NOW.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Mauricio Duque",
+      "email": "mauricio.duque.eje@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "version": "0.0.1",
+  "frameworks": "arduino",
+  "platforms": "espressif"
+}
