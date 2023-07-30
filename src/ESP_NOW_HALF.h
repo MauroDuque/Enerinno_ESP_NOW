@@ -1,5 +1,5 @@
-#ifndef ESPNOWSNDR_H
-#define ESPNOWSNDR_H
+#ifndef ESP_NOW_HALF_H
+#define ESP_NOW_HALF_H
 
 #include "struct_message.h"
 
