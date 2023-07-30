@@ -175,7 +175,7 @@ PairingStatus autoPairing(){
 }  
 
 void setup_esp_now_sender(int id) {
-  
+  BOARD_ID = id;
   Serial.print("Client Board MAC Address:  ");
   Serial.println(WiFi.macAddress());
   WiFi.mode(WIFI_STA);
