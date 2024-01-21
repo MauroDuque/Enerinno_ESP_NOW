@@ -59,7 +59,7 @@ void espnowsndr_setup(int id, uint8_t mac_dest[]) {
   }
 }
 
-void espnowsndr_loop(struct_message* myDta) {
+String espnowsndr_loop(struct_message* myDta) {
     myData.msgType = DATA;
     myData.id = BOARD_ID;
     myData.temp = myDta->temp;
@@ -109,9 +109,26 @@ void espnowsndr_loop(struct_message* myDta) {
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
   
   if (result == ESP_OK) {
-    Serial.println("Sent with success");
-  }
-  else {
-    Serial.println("Error sending the data");
+    return "Sent with success";
+  } else if (result == ESP_ERR_ESPNOW_NOT_INIT) {
+    return "ESP-NOW not initialized";
+  } else if (result == ESP_ERR_ESPNOW_ARG) {
+    return "Invalid argument";
+  } else if (result == ESP_ERR_ESPNOW_INTERNAL) {
+    return "Internal error occurred";
+  } else if (result == ESP_ERR_ESPNOW_NO_MEM) {
+    return "Memory allocation failed";
+  } else if (result == ESP_ERR_ESPNOW_NOT_FOUND) {
+    return "Peer not found";
+  } else if (result == ESP_ERR_ESPNOW_FULL) {
+    return "Internal buffer is full";
+  // } else if (result == ESP_ERR_ESPNOW_NOT_SUPPORT) {
+  //   return "ESP-NOW not supported";
+  // } else if (result == ESP_ERR_ESPNOW_ABORT) {
+  //   return "Sending operation aborted";
+  // } else if (result == ESP_ERR_ESPNOW_RST) {
+  //   return "ESP-NOW reset";
+  } else {
+    return "Unknown error";
   }
 }
