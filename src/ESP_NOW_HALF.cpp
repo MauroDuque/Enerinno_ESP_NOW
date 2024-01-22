@@ -4,6 +4,7 @@
 #include "struct_message.h"
 
 int BOARD_ID = 99; // Sensor 1 Temperature water outlet ID 7 || Temperature water inlet ID 6
+bool last_status = false;
 
 uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
@@ -16,10 +17,15 @@ esp_now_peer_info_t peerInfo;
 enum MessageType {PAIRING, DATA,};
 unsigned int readingId = 0; 
 
+bool status_OnDataSent() {
+  return last_status;
+}
+
 // callback when data is sent
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   Serial.print("\r\nLast Packet Send Status:\t");
   Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+  last_status = ESP_NOW_SEND_SUCCESS;
 }
 
 void espnowsndr_setup(int id, uint8_t mac_dest[]) {

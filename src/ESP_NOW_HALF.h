@@ -5,4 +5,5 @@
 
 void espnowsndr_setup(int id, uint8_t mac_dest[]);
 String espnowsndr_loop(struct_message* myDta);
+bool status_OnDataSent();
 #endif
